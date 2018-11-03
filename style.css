@@ -1,0 +1,9 @@
+input:checked + label {
+    text-decoration: line-through;
+}
+
+#list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
