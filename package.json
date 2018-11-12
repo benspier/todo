@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "static & onchange '**/*.js' -- prettier --single-quote --write '**/*.js'",
+    "lint": "lynt --fix"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/benspier/todo#readme",
   "devDependencies": {
     "prettier": "1.14.3"
+  },
+  "dependencies": {
+    "lynt": "^0.5.4",
+    "onchange": "^5.1.0"
   }
 }
