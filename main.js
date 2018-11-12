@@ -30,13 +30,13 @@ clearCompletedButton.addEventListener('click', () => {
 //function
 function addToList() {
   const li = document.createElement('li');
-  const liCheckbox = document.createElement('input');
-  const liLabel = document.createElement('label');
-  liCheckbox.type = 'checkbox';
-  liCheckbox.dataset.checkbox = 'unchecked';
-  liLabel.innerText = textBox.value;
+  const input = document.createElement('input');
+  const label = document.createElement('label');
+  input.type = 'checkbox';
+  input.dataset.checkbox = 'unchecked';
+  label.innerText = textBox.value;
   textBox.value = '';
   list.appendChild(li);
-  li.appendChild(liCheckbox);
-  li.appendChild(liLabel);
+  li.appendChild(input);
+  li.appendChild(label);
 }
