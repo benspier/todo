@@ -21,7 +21,7 @@ addButton.addEventListener('click', () => {
 
 //clear-completed button
 clearCompletedButton.addEventListener('click', () => {
-  while ((list.querySelector('input').checked = true)) {
+  if (list.querySelector('input').checked === true) {
     list.querySelector('input:checked + label').remove();
     list.querySelector('input:checked').remove();
   }
