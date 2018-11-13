@@ -21,10 +21,10 @@ addButton.addEventListener('click', () => {
 
 //clear-completed button
 clearCompletedButton.addEventListener('click', () => {
-  if (list.querySelector('input').checked === true) {
-    list.querySelector('input:checked + label').remove();
-    list.querySelector('input:checked').remove();
-  }
+  const array = list.querySelectorAll('input:checked');
+  array.forEach(function(listItem) {
+    listItem.parentNode.remove();
+  });
 });
 
 //function
