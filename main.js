@@ -1,6 +1,7 @@
 const textBox = document.querySelector('#text-box');
 const addButton = document.querySelector('#add-button');
 const clearCompletedButton = document.querySelector('#clear-completed-button');
+const clearAllButton = document.querySelector('#clear-all-button');
 const list = document.querySelector('ul');
 
 //add item with return key
@@ -22,9 +23,17 @@ addButton.addEventListener('click', () => {
 //clear-completed button
 clearCompletedButton.addEventListener('click', () => {
   const array = list.querySelectorAll('input:checked');
-  array.forEach(function(listItem) {
+  array.forEach(function (listItem) {
     listItem.parentNode.remove();
   });
+});
+
+//clear-all button
+clearAllButton.addEventListener('click', () => {
+  const array = list.querySelectorAll('li');
+  array.forEach(function (listItem) {
+    listItem.remove();
+  })
 });
 
 //function
