@@ -4,6 +4,16 @@ const clearCompletedButton = document.querySelector('#clear-completed-button');
 const clearAllButton = document.querySelector('#clear-all-button');
 const list = document.querySelector('ul');
 
+textBox.focus();
+
+list.addEventListener('click', e => {
+  if (e.target.className === 'checked') {
+    e.target.parentNode.classList.remove('checked');
+    if (e.target.parentNode.classList === 'checked')
+      e.target.classList.remove('checked');
+  } else e.target.parentNode.classList.add('checked');
+});
+
 //add item with return key
 document.addEventListener('keypress', e => {
   if (textBox.value !== '') {
@@ -23,7 +33,7 @@ addButton.addEventListener('click', () => {
 //clear-completed button
 clearCompletedButton.addEventListener('click', () => {
   const array = list.querySelectorAll('input:checked');
-  array.forEach(function (listItem) {
+  array.forEach(function(listItem) {
     listItem.parentNode.remove();
   });
 });
@@ -31,9 +41,9 @@ clearCompletedButton.addEventListener('click', () => {
 //clear-all button
 clearAllButton.addEventListener('click', () => {
   const array = list.querySelectorAll('li');
-  array.forEach(function (listItem) {
+  array.forEach(function(listItem) {
     listItem.remove();
-  })
+  });
 });
 
 //function

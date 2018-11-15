@@ -3,17 +3,27 @@
 
 <head>
     <meta charset="utf-8">
-    <title>To Do List</title>
-    <meta name="description" content="To do list app">
+    <title>To-Do List</title>
+    <meta name="description" content="To-do list app">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
-    <input id="text-box" type="text">
-    <button id="add-button" type="button">add to list</button>
-    <button id="clear-completed-button" type="button">clear completed</button>
-    <button id="clear-all-button" type="button">clear all</button>
-    <ul id="list"></ul>
+    <div id="top">
+        <div id="text-box-div">
+            <input id="text-box" type="text" placeholder="type something and hit ENTER">
+            <button id="add-button" type="button">+</button>
+        </div>
+        <div id="buttons">
+            <button id="clear-completed-button" type="button">REMOVE CHECKED</button>
+            <button id="clear-all-button" type="button">CLEAR ALL</button>
+        </div>
+    </div>
+    <div id="list-div">
+        <ul id="list">
+        </ul>
+    </div>
 </body>
 
 <script src="main.js"></script>
