@@ -8,20 +8,33 @@ let n = '0';
 //load page with cursor in text field
 textBox.focus();
 
+//check & style clicked items
 list.addEventListener('click', e => {
   if (
-    e.target.tagName === 'LI' &&
-    e.target.querySelector('input').checked !== 'true'
+    e.target.tagName === 'LABEL' &&
+    e.target.previousSibling.checked === false
   ) {
-    e.target.classList.toggle('done');
-    e.target.querySelector('input').checked = 'true';
+    e.target.previousSibling.checked = true;
+    e.target.parentNode.classList.toggle('done');
+    return;
   }
   if (
     e.target.tagName === 'LABEL' &&
-    e.target.parentNode.querySelector('input').checked !== 'true'
+    e.target.previousSibling.checked === true
   ) {
+    e.target.previousSibling.checked = false;
     e.target.parentNode.classList.toggle('done');
-    e.target.parentNode.querySelector('input').checked = 'true';
+    return;
+  }
+  if (e.target.tagName === 'LI' && e.target.firstChild.checked === false) {
+    e.target.firstChild.checked = true;
+    e.target.classList.toggle('done');
+    return;
+  }
+  if (e.target.tagName === 'LI' && e.target.firstChild.checked === true) {
+    e.target.firstChild.checked = false;
+    e.target.classList.toggle('done');
+    return;
   }
 });
 
