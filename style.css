@@ -37,11 +37,12 @@ body {
 }
 
 #add-button {
-    background: transparent;
-    font-size: 2rem;
     margin:0;
     padding:0;
+    background: transparent;
+    font-size: 2rem;
     outline: none;
+    color: #ffeb3b;
 
 }
 
@@ -66,14 +67,6 @@ button {
     color: white;
     font-weight: bolder;
     outline: none;
-}
-
-#add-button {
-    color: #ffeb3b;
-}
-
-#add-button:active {
-    color: red;
 }
 
 button:active {
@@ -101,14 +94,6 @@ li:hover {
     background-color: mediumaquamarine;
 }
 
-.done {
-    text-decoration: line-through;
-    text-decoration-color: red;
-    color: gray;
-    background-color: mediumseagreen;
-    border-color: mediumseagreen;
-}
-
 input[type=checkbox] {
     display: none;
 }
@@ -119,6 +104,7 @@ label {
 
 label::before {
     content:"\2713";
+    color: #ffeb3b;
     border: none;
     border-radius: 0.1rem;
     display:inline-block;
@@ -130,6 +116,14 @@ label::before {
     vertical-align: bottom;
     color: transparent;
     transition: 0.2s;
+}
+
+.done {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    color: gray;
+    background-color: mediumseagreen;
+    border-color: mediumseagreen;
 }
 
 .done > label::before{
