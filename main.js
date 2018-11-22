@@ -1,6 +1,6 @@
 const textBox = document.querySelector('#text-box');
 const addButton = document.querySelector('#add-button');
-const clearCompletedButton = document.querySelector('#clear-completed-button');
+const clearDoneButton = document.querySelector('#clear-done-button');
 const clearAllButton = document.querySelector('#clear-all-button');
 const list = document.querySelector('ul');
 let n = '0';
@@ -54,8 +54,8 @@ addButton.addEventListener('click', () => {
   }
 });
 
-//clear-completed button
-clearCompletedButton.addEventListener('click', () => {
+//clear-done button
+clearDoneButton.addEventListener('click', () => {
   const array = list.querySelectorAll('input:checked');
   array.forEach(function(listItem) {
     listItem.parentNode.remove();
