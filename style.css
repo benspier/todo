@@ -2,6 +2,8 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -10,6 +12,13 @@ body {
     margin: 15rem auto;   
     background-color: #20212b;
     font-family: 'Roboto', sans-serif;    
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        max-height: 100%;
+        margin: 1rem;
+    }
 }
 
 #top-section {
@@ -37,6 +46,13 @@ body {
     outline: none;
 }
 
+@media only screen and (max-width: 600px) {
+    #text-box {
+        width: 18rem;
+        font-size: 1rem;
+    }
+}
+
 #add-button {
     margin:0;
     padding:0;
@@ -44,7 +60,12 @@ body {
     font-size: 2rem;
     outline: none;
     color: #ffeb3b;
+}
 
+@media only screen and (max-width: 600px) {
+    #add-button {
+        font-size: 1rem;
+    }
 }
 
 #add-button:active {
@@ -93,7 +114,7 @@ li {
 }
 
 li:hover {
-    background-color: mediumaquamarine;
+    background-color: #ffa800;
 }
 
 input[type=checkbox] {
