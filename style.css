@@ -151,3 +151,14 @@ li.done > input[type=checkbox]:checked + label::before{
     content:"\2713";
     color: #ffeb3b;
 }
+
+.responsive-margin {
+    margin: 2rem auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .responsive-margin {
+        max-height: 100%;
+        margin: 1rem auto;
+    }
+}
