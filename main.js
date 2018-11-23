@@ -1,14 +1,16 @@
+const body = document.querySelector('body');
 const textBox = document.querySelector('#text-box');
 const addButton = document.querySelector('#add-button');
-const clearDoneButton = document.querySelector('#clear-done-button');
-const clearAllButton = document.querySelector('#clear-all-button');
+const clearButtons = document.querySelector('#clear-buttons-div');
+const clearDoneButton = clearButtons.querySelector('#clear-done-button');
+const clearAllButton = clearButtons.querySelector('#clear-all-button');
 const list = document.querySelector('ul');
 let n = '0';
 
 //load page with cursor in text field
 textBox.focus();
 
-//check & style clicked items
+//click to check/uncheck & style list items
 list.addEventListener('click', e => {
   if (e.target.tagName === 'INPUT' && e.target.checked === false) {
     e.target.checked = true;
@@ -48,11 +50,58 @@ list.addEventListener('click', e => {
   }
 });
 
+//spacebar to check/uncheck & style list items
+list.addEventListener('keypress', e => {
+  if (e.which === 32) {
+    if (e.target.tagName === 'INPUT' && e.target.checked === false) {
+      e.target.checked = true;
+      e.target.parentNode.classList.add('done');
+      return;
+    }
+    if (e.target.tagName === 'INPUT' && e.target.checked === true) {
+      e.target.checked = false;
+      e.target.parentNode.classList.remove('done');
+      return;
+    }
+    if (
+      e.target.tagName === 'LABEL' &&
+      e.target.previousSibling.checked === false
+    ) {
+      e.target.previousSibling.checked = true;
+      e.target.parentNode.classList.toggle('done');
+      return;
+    }
+    if (
+      e.target.tagName === 'LABEL' &&
+      e.target.previousSibling.checked === true
+    ) {
+      e.target.previousSibling.checked = false;
+      e.target.parentNode.classList.toggle('done');
+      return;
+    }
+    if (e.target.tagName === 'LI' && e.target.firstChild.checked === false) {
+      e.target.firstChild.checked = true;
+      e.target.classList.toggle('done');
+      return;
+    }
+    if (e.target.tagName === 'LI' && e.target.firstChild.checked === true) {
+      e.target.firstChild.checked = false;
+      e.target.classList.toggle('done');
+      return;
+    }
+  }
+});
+
 //add item with return key
-document.addEventListener('keypress', e => {
+textBox.addEventListener('keypress', e => {
   if (textBox.value !== '') {
     if (e.which === 13) {
+      if (!list.querySelector('li')) {
+        clearButtons.style.visibility = 'visible';
+        body.style.margin = '2rem auto';
+      }
       addToList();
+      textBox.focus();
     }
   }
 });
@@ -60,7 +109,12 @@ document.addEventListener('keypress', e => {
 //add-item button
 addButton.addEventListener('click', () => {
   if (textBox.value !== '') {
+    if (!list.querySelector('li')) {
+      clearButtons.style.visibility = 'visible';
+      body.style.margin = '2rem auto';
+    }
     addToList();
+    textBox.focus();
   }
 });
 
@@ -70,6 +124,11 @@ clearDoneButton.addEventListener('click', () => {
   array.forEach(function(listItem) {
     listItem.parentNode.remove();
   });
+  if (!list.querySelector('li')) {
+    clearButtons.style.visibility = 'hidden';
+    body.style.margin = '15rem auto';
+  }
+  textBox.focus();
 });
 
 //clear-all button
@@ -79,6 +138,11 @@ clearAllButton.addEventListener('click', () => {
     listItem.remove();
   });
   n = '0';
+  if (!list.querySelector('li')) {
+    clearButtons.style.visibility = 'hidden';
+    body.style.margin = '15rem auto';
+  }
+  textBox.focus();
 });
 
 //function

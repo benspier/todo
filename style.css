@@ -6,7 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 36rem;
-    margin: 2rem auto;   
+    max-height: 800px;
+    margin: 15rem auto;   
     background-color: #20212b;
     font-family: 'Roboto', sans-serif;    
 }
@@ -23,11 +24,11 @@ body {
     flex-direction: row;
     max-width: 36rem;
     margin: 0;
-    border-bottom: white dotted;
+    border-bottom: #ffa800 dotted;
 }
 
 #text-box {
-    width: 36rem;
+    width: 24rem;
     padding: 0.5rem;
     border: none;
     background: transparent;
@@ -51,6 +52,7 @@ body {
 }
 
 #clear-buttons-div {
+    visibility: hidden;
     margin: 1rem; 
     width: 24rem;
     display: flex;
