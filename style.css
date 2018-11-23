@@ -81,16 +81,31 @@ body {
     flex-direction: row;    
 }
 
+@media only screen and (max-width: 600px) {
+    #clear-buttons-div {
+        margin: 0.75rem;
+    }
+}
+
 button {
-    font-size: 0.5rem;
     padding: 0.75rem;
     border-radius: 1rem;
     border: none;
+    font-size: 0.5rem;
     background-color: #67b4e0;
     color: white;
     font-weight: bolder;
     outline: none;
 }
+
+@media only screen and (max-width: 600px) {
+    button {
+        border-radius: 1rem;
+        padding: 0.5rem;
+        font-size: 8px;
+    }
+}
+
 
 button:active {
     background-color: red;
