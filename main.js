@@ -129,6 +129,7 @@ clearDoneButton.addEventListener('click', () => {
   if (!list.querySelector('li')) {
     clearButtons.style.visibility = 'hidden';
     body.classList.remove('responsive-margin');
+    textBox.placeholder = 'start a list...';
   }
   textBox.focus();
 });
@@ -143,6 +144,7 @@ clearAllButton.addEventListener('click', () => {
   if (!list.querySelector('li')) {
     clearButtons.style.visibility = 'hidden';
     body.classList.remove('responsive-margin');
+    textBox.placeholder = 'start a list...';
   }
   textBox.focus();
 });
