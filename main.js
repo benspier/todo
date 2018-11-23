@@ -99,6 +99,7 @@ textBox.addEventListener('keypress', e => {
       if (!list.querySelector('li')) {
         clearButtons.style.visibility = 'visible';
         body.classList.add('responsive-margin');
+        textBox.placeholder = 'add something else...';
       }
       addToList();
       textBox.focus();
@@ -112,6 +113,7 @@ addButton.addEventListener('click', () => {
     if (!list.querySelector('li')) {
       clearButtons.style.visibility = 'visible';
       body.classList.add('responsive-margin');
+      textBox.placeholder = 'add something else...';
     }
     addToList();
     textBox.focus();
