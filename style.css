@@ -33,7 +33,7 @@ body {
     flex-direction: row;
     max-width: 36rem;
     margin: 0;
-    border-bottom: #ffa800 dotted;
+    border-bottom: #ffa800 dotted 2px;
 }
 
 #text-box {
