@@ -10,6 +10,16 @@ textBox.focus();
 
 //check & style clicked items
 list.addEventListener('click', e => {
+  if (e.target.tagName === 'INPUT' && e.target.checked === false) {
+    e.target.checked = true;
+    e.target.parentNode.classList.add('done');
+    return;
+  }
+  if (e.target.tagName === 'INPUT' && e.target.checked === true) {
+    e.target.checked = false;
+    e.target.parentNode.classList.remove('done');
+    return;
+  }
   if (
     e.target.tagName === 'LABEL' &&
     e.target.previousSibling.checked === false
