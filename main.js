@@ -1,3 +1,10 @@
+(function(exports) {
+  const { addToList } = exports.app;
+});
+typeof exports === undefined ? window : exports;
+
+// var addtoList = require('./components/add-to-list.js');
+
 const body = document.querySelector('body');
 const textBox = document.querySelector('#text-box');
 const addButton = document.querySelector('#add-button');
@@ -150,17 +157,17 @@ clearAllButton.addEventListener('click', () => {
 });
 
 //function
-function addToList() {
-  const li = document.createElement('li');
-  const input = document.createElement('input');
-  const label = document.createElement('label');
-  input.type = 'checkbox';
-  label.innerText = textBox.value;
-  textBox.value = '';
-  list.appendChild(li);
-  li.appendChild(input);
-  li.appendChild(label);
-  input.setAttribute('id', n);
-  label.setAttribute('for', n);
-  n = parseInt(Number(n) + 1);
-}
+// function addToList() {
+//   const li = document.createElement('li');
+//   const input = document.createElement('input');
+//   const label = document.createElement('label');
+//   input.type = 'checkbox';
+//   label.innerText = textBox.value;
+//   textBox.value = '';
+//   list.appendChild(li);
+//   li.appendChild(input);
+//   li.appendChild(label);
+//   input.setAttribute('id', n);
+//   label.setAttribute('for', n);
+//   n = parseInt(Number(n) + 1);
+// }
