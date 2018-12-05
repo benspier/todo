@@ -15,5 +15,4 @@
   };
 
   exports.addToList = addToList;
-});
-typeof exports === undefined ? (window.app = {}) : exports;
+})(typeof exports === 'undefined' ? (window.app = {}) : exports);

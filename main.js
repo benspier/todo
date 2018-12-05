@@ -1,9 +1,6 @@
 (function(exports) {
   const { addToList } = exports.app;
-});
-typeof exports === undefined ? window : exports;
-
-// var addtoList = require('./components/add-to-list.js');
+})(typeof exports === 'undefined' ? window : exports);
 
 const body = document.querySelector('body');
 const textBox = document.querySelector('#text-box');
