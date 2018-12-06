@@ -1,5 +1,6 @@
 //add item with return key
 (function(exports) {
+  const clearButtons = document.querySelector('#clear-buttons-div');
   const textBox = document.querySelector('#text-box');
   const addItemReturn = textBox.addEventListener('keypress', e => {
     if (textBox.value !== '') {

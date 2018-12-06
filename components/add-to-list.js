@@ -1,5 +1,6 @@
 (function(exports) {
   addToList = () => {
+    const textBox = document.querySelector('#text-box');
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
