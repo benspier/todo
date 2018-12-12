@@ -2,9 +2,9 @@
   const body = document.querySelector('body');
   const inputTextBox = body.querySelector('#text-box');
   const buttonAdd = body.querySelector('#add-button');
-  const buttons = body.querySelector('#clear-buttons-div');
-  const buttonClearDone = buttons.querySelector('#clear-done-button');
-  const buttonClearAll = buttons.querySelector('#clear-all-button');
+  const buttonsClear = body.querySelector('#clear-buttons-div');
+  const buttonClearDone = buttonsClear.querySelector('#clear-done-button');
+  const buttonClearAll = buttonsClear.querySelector('#clear-all-button');
   const list = body.querySelector('ul');
   let n = 0;
 
@@ -12,11 +12,11 @@
 
   //event listeners
   inputTextBox.addEventListener('keypress', e => {
-    if (inputTextBox.value !== '' && e.which === 13) addListItem();
+    if (inputTextBox.value && e.key === 'Enter') addListItem();
   });
 
   buttonAdd.addEventListener('click', () => {
-    if (inputTextBox.value !== '') addListItem();
+    if (inputTextBox.value) addListItem();
     inputTextBox.focus();
   });
 
@@ -63,13 +63,13 @@
 
   function changeBodyStyle() {
     body.classList.toggle('responsive-margin');
-    buttons.style.visibility = 'visible';
+    buttonsClear.style.visibility = 'visible';
     inputTextBox.placeholder = 'add something else...';
   }
 
   function restoreDefaultBodyStyle() {
     body.classList.toggle('responsive-margin');
-    buttons.style.visibility = 'hidden';
+    buttonsClear.style.visibility = 'hidden';
     inputTextBox.placeholder = 'start a list...';
     n = 0;
   }
