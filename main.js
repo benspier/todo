@@ -60,9 +60,7 @@ function addToList() {
   const input = document.createElement('input');
   const label = document.createElement('label');
   if (!list.querySelector('li')) {
-    body.classList.toggle('responsive-margin');
-    clearButtons.style.visibility = 'visible';
-    textBoxInput.placeholder = 'add something else...';
+    listStyle();
   }
   input.type = 'checkbox';
   label.innerText = textBoxInput.value;
@@ -76,7 +74,12 @@ function addToList() {
   textBoxInput.focus();
 }
 
-//restore default
+function listStyle() {
+  body.classList.toggle('responsive-margin');
+  clearButtons.style.visibility = 'visible';
+  textBoxInput.placeholder = 'add something else...';
+}
+
 function restoreDefaultStyle() {
   body.classList.toggle('responsive-margin');
   clearButtons.style.visibility = 'hidden';
