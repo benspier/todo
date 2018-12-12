@@ -12,17 +12,12 @@
 
   //event listeners
   textBoxInput.addEventListener('keypress', e => {
-    if (textBoxInput.value !== '') {
-      if (e.which === 13) {
-        addToList();
-      }
-    }
+    if (textBoxInput.value !== '' && e.which === 13) addToList();
   });
 
   addButton.addEventListener('click', () => {
-    if (textBoxInput.value !== '') {
-      addToList();
-    }
+    if (textBoxInput.value !== '') addToList();
+    textBoxInput.focus();
   });
 
   clearDoneButton.addEventListener('click', () => {
@@ -30,10 +25,9 @@
     array.forEach(function(listItem) {
       listItem.parentNode.remove();
     });
-    if (!list.querySelector('li')) {
-      restoreDefaultBodyStyle();
-    }
-    textBox.focus();
+    !list.querySelector('li')
+      ? restoreDefaultBodyStyle()
+      : textBoxInput.focus();
   });
 
   clearAllButton.addEventListener('click', () => {
@@ -42,10 +36,12 @@
       listItem.remove();
     });
     restoreDefaultBodyStyle();
+    textBoxInput.focus();
   });
 
   list.addEventListener('click', e => {
     checkBox(e);
+    textBoxInput.focus();
   });
 
   //functions
@@ -53,9 +49,7 @@
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
-    if (!list.querySelector('li')) {
-      changeBodyStyle();
-    }
+    if (!list.querySelector('li')) changeBodyStyle();
     list.appendChild(li);
     li.appendChild(input);
     li.appendChild(label);
@@ -65,7 +59,6 @@
     label.innerText = textBoxInput.value;
     textBoxInput.value = '';
     n += 1;
-    textBoxInput.focus();
   }
 
   function changeBodyStyle() {
@@ -79,14 +72,12 @@
     clearButtons.style.visibility = 'hidden';
     textBoxInput.placeholder = 'start a list...';
     n = 0;
-    textBoxInput.focus();
   }
 
   function checkBox(e) {
     const element = e.target.closest('li');
     element.firstChild.checked = true;
     element.classList.toggle('done');
-    console.log(e.target);
     console.log(element);
   }
 })();
