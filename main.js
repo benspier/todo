@@ -31,7 +31,7 @@
       listItem.parentNode.remove();
     });
     if (!list.querySelector('li')) {
-      restoreDefaultStyle();
+      restoreDefaultBodyStyle();
     }
     textBox.focus();
   });
@@ -68,13 +68,6 @@
     textBoxInput.focus();
   }
 
-  function checkBox(e) {
-    const element = e.target.closest('li');
-    element.firstChild.checked = true;
-    element.classList.toggle('done');
-    console.log(element);
-  }
-
   function changeBodyStyle() {
     body.classList.toggle('responsive-margin');
     clearButtons.style.visibility = 'visible';
@@ -87,5 +80,13 @@
     textBoxInput.placeholder = 'start a list...';
     n = 0;
     textBoxInput.focus();
+  }
+
+  function checkBox(e) {
+    const element = e.target.closest('li');
+    element.firstChild.checked = true;
+    element.classList.toggle('done');
+    console.log(e.target);
+    console.log(element);
   }
 })();
