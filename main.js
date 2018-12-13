@@ -12,10 +12,13 @@
 
   //event listeners
   inputTextBox.addEventListener('keypress', e => {
+    if (e.key === 'Enter' && !list.querySelector('li')) changeBodyStyle();
     if (inputTextBox.value && e.key === 'Enter') addListItem();
+    inputTextBox.focus();
   });
 
   buttonAdd.addEventListener('click', () => {
+    if (!list.querySelector('li')) changeBodyStyle();
     if (inputTextBox.value) addListItem();
     inputTextBox.focus();
   });
@@ -49,7 +52,6 @@
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
-    if (!list.querySelector('li')) changeBodyStyle();
     list.appendChild(li);
     li.appendChild(input);
     li.appendChild(label);
