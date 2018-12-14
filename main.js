@@ -13,7 +13,7 @@
   //event listeners
   inputTextBox.addEventListener('keypress', e => {
     if (e.key === 'Enter' && !list.querySelector('li')) changeBodyStyle();
-    if (inputTextBox.value && e.key === 'Enter') addListItem();
+    if (e.key === 'Enter' && inputTextBox.value) addListItem();
     inputTextBox.focus();
   });
 
@@ -43,8 +43,10 @@
   });
 
   list.addEventListener('click', e => {
-    checkBox(e);
-    inputTextBox.focus();
+    const element = e.target.closest('li');
+    element.firstChild.checked = true;
+    element.classList.toggle('done');
+    console.log(element);
   });
 
   //functions
@@ -76,10 +78,9 @@
     n = 0;
   }
 
-  function checkBox(e) {
-    const element = e.target.closest('li');
-    element.firstChild.checked = true;
-    element.classList.toggle('done');
-    console.log(element);
-  }
+  // function checkBox(e) {
+  //   const element = e.target.closest('li');
+  //   element.firstChild.checked = true;
+  //   element.classList.toggle('done');
+  // }
 })();
