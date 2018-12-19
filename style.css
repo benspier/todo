@@ -124,6 +124,7 @@ li {
   color: white;
   margin: 0.25rem;
   padding: 0.25rem;
+  pointer-events: visible;
 }
 
 li:hover {
@@ -136,6 +137,7 @@ input[type='checkbox'] {
 
 label {
   margin: 0.2rem;
+  pointer-events: none;
 }
 
 label::before {
@@ -164,13 +166,21 @@ li.done > label::before {
   background-color: #ffeb3b;
 }
 
-.responsive-margin {
+/* .responsive-margin {
+  margin: 2rem auto;
+} */
+
+body.list-started {
   margin: 2rem auto;
 }
 
 @media only screen and (max-width: 600px) {
-  .responsive-margin {
+  body.list-started {
     max-height: 100%;
     margin: 1rem auto;
   }
+}
+
+#clear-buttons-div.list-started {
+  visibility: visible;
 }

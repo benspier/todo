@@ -6,7 +6,7 @@
   const buttonClearDone = buttonsClear.querySelector('#clear-done-button');
   const buttonClearAll = buttonsClear.querySelector('#clear-all-button');
   const list = body.querySelector('ul');
-  let n = 0;
+  let n = 1;
 
   inputTextBox.focus();
 
@@ -28,9 +28,10 @@
     array.forEach(function(listItem) {
       listItem.parentNode.remove();
     });
-    !list.querySelector('li')
-      ? restoreDefaultBodyStyle()
-      : inputTextBox.focus();
+    if (!list.querySelector('li')) {
+      revertBodyStyle();
+      inputTextBox.focus();
+    }
   });
 
   buttonClearAll.addEventListener('click', () => {
@@ -38,18 +39,18 @@
     array.forEach(function(listItem) {
       listItem.remove();
     });
-    restoreDefaultBodyStyle();
+    revertBodyStyle();
     inputTextBox.focus();
   });
 
   list.addEventListener('click', e => {
     const element = e.target.closest('li');
-    e.preventDefault();
     !element.firstChild.checked
       ? (element.firstChild.checked = true)
       : (element.firstChild.checked = false);
     element.classList.toggle('done');
     console.log(element.firstChild.checked);
+    console.log(e.target);
   });
 
   //functions
@@ -57,7 +58,6 @@
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
-    const span = document.createElement('span');
     list.appendChild(li);
     li.appendChild(input);
     input.type = 'checkbox';
@@ -70,15 +70,15 @@
   }
 
   function changeBodyStyle() {
-    body.classList.toggle('responsive-margin');
-    buttonsClear.style.visibility = 'visible';
+    body.classList.toggle('list-started');
+    buttonsClear.classList.toggle('list-started');
     inputTextBox.placeholder = 'add something else...';
   }
 
-  function restoreDefaultBodyStyle() {
-    body.classList.toggle('responsive-margin');
-    buttonsClear.style.visibility = 'hidden';
+  function revertBodyStyle() {
+    body.classList.toggle('list-started');
+    buttonsClear.classList.toggle('list-started');
     inputTextBox.placeholder = 'start a list...';
-    n = 0;
+    n = 1;
   }
 })();
