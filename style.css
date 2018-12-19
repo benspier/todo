@@ -139,17 +139,17 @@ label {
 }
 
 label::before {
-  content: '';
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  padding-left: 0.2rem;
-  padding-bottom: 0.3rem;
-  margin-right: 0.2rem;
-  border: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0 0 0.3rem 0.2rem;
+  margin: 0 0.3rem 0.1rem 0;
+  border: 1px solid yellow;
+  border-radius: 0%;
   vertical-align: bottom;
   color: transparent;
-  transition: 0.2s;
+  content: '';
+  transition: 0.1s;
 }
 
 .done {
@@ -160,9 +160,8 @@ label::before {
   border-color: mediumseagreen;
 }
 
-li.done > input[type='checkbox']:checked + label::before {
-  content: '\2713';
-  color: #ffeb3b;
+li.done > label::before {
+  background-color: #ffeb3b;
 }
 
 .responsive-margin {
