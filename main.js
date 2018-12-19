@@ -44,9 +44,12 @@
 
   list.addEventListener('click', e => {
     const element = e.target.closest('li');
-    element.firstChild.checked = true;
+    e.preventDefault();
+    !element.firstChild.checked
+      ? (element.firstChild.checked = true)
+      : (element.firstChild.checked = false);
     element.classList.toggle('done');
-    console.log(element);
+    console.log(element.firstChild.checked);
   });
 
   //functions
@@ -54,13 +57,14 @@
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
+    const span = document.createElement('span');
     list.appendChild(li);
     li.appendChild(input);
-    li.appendChild(label);
-    input.setAttribute('id', n);
-    label.setAttribute('for', n);
     input.type = 'checkbox';
+    input.setAttribute('id', n);
+    li.appendChild(label);
     label.innerText = inputTextBox.value;
+    label.setAttribute('for', n);
     inputTextBox.value = '';
     n += 1;
   }
@@ -77,10 +81,4 @@
     inputTextBox.placeholder = 'start a list...';
     n = 0;
   }
-
-  // function checkBox(e) {
-  //   const element = e.target.closest('li');
-  //   element.firstChild.checked = true;
-  //   element.classList.toggle('done');
-  // }
 })();
