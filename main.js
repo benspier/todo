@@ -10,47 +10,49 @@
 
   inputTextBox.focus();
 
-  //event listeners
-  inputTextBox.addEventListener('keypress', e => {
-    if (e.key === 'Enter' && !list.querySelector('li')) changeBodyStyle();
-    if (e.key === 'Enter' && inputTextBox.value) addListItem();
-    inputTextBox.focus();
-  });
+  //event handlers
+  body.addEventListener('click', e => {
+    if (e.target.parentElement === list) {
+      const element = e.target;
+      !element.firstChild.checked
+        ? (element.firstChild.checked = true)
+        : (element.firstChild.checked = false);
+      element.classList.toggle('done');
+      console.log(element.firstChild.checked);
+      console.log(e.target);
+    }
 
-  buttonAdd.addEventListener('click', () => {
-    if (!list.querySelector('li')) changeBodyStyle();
-    if (inputTextBox.value) addListItem();
-    inputTextBox.focus();
-  });
+    if (e.target === buttonAdd) {
+      if (!list.querySelector('li')) changeBodyStyle();
+      if (inputTextBox.value) addListItem();
+      inputTextBox.focus();
+    }
 
-  buttonClearDone.addEventListener('click', () => {
-    const array = list.querySelectorAll('input:checked');
-    array.forEach(function(listItem) {
-      listItem.parentNode.remove();
-    });
-    if (!list.querySelector('li')) {
+    if (e.target === buttonClearDone) {
+      const array = list.querySelectorAll('input:checked');
+      array.forEach(function(listItem) {
+        listItem.parentNode.remove();
+      });
+      if (!list.querySelector('li')) {
+        revertBodyStyle();
+        inputTextBox.focus();
+      }
+    }
+
+    if (e.target === buttonClearAll) {
+      const array = list.querySelectorAll('li');
+      array.forEach(function(listItem) {
+        listItem.remove();
+      });
       revertBodyStyle();
       inputTextBox.focus();
     }
   });
 
-  buttonClearAll.addEventListener('click', () => {
-    const array = list.querySelectorAll('li');
-    array.forEach(function(listItem) {
-      listItem.remove();
-    });
-    revertBodyStyle();
+  inputTextBox.addEventListener('keypress', e => {
+    if (e.key === 'Enter' && !list.querySelector('li')) changeBodyStyle();
+    if (e.key === 'Enter' && inputTextBox.value) addListItem();
     inputTextBox.focus();
-  });
-
-  list.addEventListener('click', e => {
-    const element = e.target.closest('li');
-    !element.firstChild.checked
-      ? (element.firstChild.checked = true)
-      : (element.firstChild.checked = false);
-    element.classList.toggle('done');
-    console.log(element.firstChild.checked);
-    console.log(e.target);
   });
 
   //functions
